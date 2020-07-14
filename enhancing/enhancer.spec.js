@@ -35,7 +35,13 @@ describe("enhancer unit tests", () => {
         expect(enhancer.fail({ name: "Sword", durability: 45, enhancement: 17 })).toEqual({ name: "Sword", durability: 35, enhancement: 16 })
     })
 
-    // it("", () => {
-        
-    // })
+    // STRETCH FUNCTION TESTS /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    it("if the enhancement level is 0, the the name is not modified", () => {
+        expect(enhancer.get({ name: "Sword", durability: 85, enhancement: 0 })).toEqual({ name: "Sword", durability: 85, enhancement: 0 })
+    })
+
+    it("if the enhancement level is greater than 0, change the name to include the enhancement level, preceded by a plus sign ( + ), between square brackets before the item's name", () => {
+        expect(enhancer.get({ name: "Sword", durability: 85, enhancement: 13 })).toEqual({ name: "[+13] Sword", durability: 85, enhancement: 13 })
+    })
 })
